@@ -1,0 +1,17 @@
+```Echomail
+Sender: 63ZRB6SIDOOTHQKQAZCJQ2EXSQTR3BFZHAR3QD2FJ62TOHL36HAA
+Group: general
+From: Joe Q. User [mailto:joe.q.user@example.com]
+Date: 2025-09-29 13:45:00
+To: All
+Subj: Frist Psot
+```
+# This is a thread opener
+
+## Generally every post can be as elaborate as Gemtext allows.
+
+This is a dead simple echomail message with an attachment.
+
+=> SPEC.md I have discovered a truly marvelous proof of this, which this margin is too narrow to contain, so here it is as an attachment.
+
+

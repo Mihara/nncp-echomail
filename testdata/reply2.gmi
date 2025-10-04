@@ -1,0 +1,20 @@
+```Echomail
+Sender: NMEOT4GMO5MPF27EAZWFYL5XYLVZPIVOYUVJGQ4Y7HAUCUM7HF4Q
+Group: general
+ReplyTo: d3iuuD8r-NTaH9o0vEs_Usl_EvLxPMG4Q_x2Nvmqvec
+From: Me [mailto:meme@example.com]
+Date: 2025-09-30 18:45:00
+To: Me Again [mailto:me@example.com]
+Subj: Re:Re: Frist Psot
+```
+
+Re:Re:Re...
+
+Actually, I would prefer this Re:Re was not a thing: It is a holdover from prehistoric times of FidoNet, where displaying messages as threads was not something people did, mostly due to screen space constraints.
+
+We can be better than that.
+
+Otherwise, please carry on.
+
+
+

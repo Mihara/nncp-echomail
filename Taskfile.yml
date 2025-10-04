@@ -1,0 +1,48 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  BIN_DIR: bin
+  CMDS: [echomail-index, echomail-mailer]
+
+tasks:
+
+  default:
+    desc: "List available tasks"
+    cmds:
+      - task -a
+    silent: true
+
+  build:
+    desc: "Build executables"
+    sources:
+      - cmd/**/*.go
+    generates:
+      - bin/*
+    cmds:
+      - for: { var: CMDS }
+        cmd: |
+          echo "Building {{ .ITEM }}..."
+          go build -ldflags="-s -w" -o {{ .BIN_DIR }}/{{ .ITEM }} ./cmd/{{ .ITEM }}
+
+  testrun:
+    desc: "Do a practice run"
+    deps:
+      - build
+    cmds:
+      - echo "Practice run - generating and indexing a thread"
+      # Clean up...
+      - mkdir -p testdata/echo testdata/envelopes
+      - rm -rf testdata/envelopes/*
+      - rm -rf testdata/echo/*
+      # Generate envelopes...
+      - cat testdata/thread.gmi | bin/echomail-mailer send -root testdata/echo -nosave SPEC.md > testdata/envelopes/thread.msg
+      - cat testdata/reply1.gmi | bin/echomail-mailer send -root testdata/echo -nosave > testdata/envelopes/reply1.msg
+      - cat testdata/reply2.gmi | bin/echomail-mailer send -root testdata/echo -nosave > testdata/envelopes/reply2.msg
+      # Receive envelopes...
+      - cat testdata/envelopes/reply2.msg | bin/echomail-mailer receive -root testdata/echo
+      - cat testdata/envelopes/reply1.msg | bin/echomail-mailer receive -root testdata/echo
+      - cat testdata/envelopes/thread.msg | bin/echomail-mailer receive -root testdata/echo
+      # Generate index.
+      - bin/echomail-index -root testdata/echo
