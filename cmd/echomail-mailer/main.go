@@ -108,7 +108,7 @@ func printGlobalUsage() {
 	fmt.Fprintf(os.Stderr, "Usage:\n")
 	fmt.Fprintf(os.Stderr, "  %s <command> [options]\n", os.Args[0])
 	fmt.Fprintf(os.Stderr, "\nCommands:\n")
-	fmt.Fprintf(os.Stderr, "  receive   Receive a messages. Use in NNCP exec.\n")
+	fmt.Fprintf(os.Stderr, "  receive   Receive a message. Use in NNCP exec.\n")
 	fmt.Fprintf(os.Stderr, "  send      Send a message. Packages a message into an envelope to be piped into an NNCP exec.\n")
 	fmt.Fprintf(os.Stderr, "\nUse \"%s <command> -h\" for more information about a command.\n", os.Args[0])
 	os.Exit(1)
