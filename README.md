@@ -13,7 +13,7 @@ You need [Go](https://go.dev/) version 1.25.1 or newer. The most expedient way t
 ```bash
 cd cmd/echomail-mailer
 go build
-cd ../../cmd/echomail-index
+cd ../echomail-index
 go build
 ```
 
