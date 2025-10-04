@@ -46,7 +46,7 @@ That is, the `.`.
   + Whether the message file remains unaltered after its hash was calculated is an implementaiton detail.
 + A message always begins with a header block, wrapped in ```` ```Echomail ```` -- that is, a gemtext preformatted text block labeled `Echomail`.
   + The header block contains `<field>: <value>` pairs, one per line, in no specific order.
-  + Messages that do not begin immediately with such a block are not valid and are to be discarded
+  + Messages that do not begin immediately with such a block are not valid and are to be discarded.
   + Empty lines in the header make the entire header invalid.
   + Any lines longer than 1024 bytes make the entire header invalid.
   + Header fields are to be space-trimmed during header parsing.
@@ -59,7 +59,7 @@ That is, the `.`.
 + `Sender`: NNCP ID of the originating node, or rather, the node the message entered the area from, since gateways are in fact possible.
 + `Group`: Name of the message group. A message group is treated as its own own separate directory (located somewhere in a vacuum) for the purposes of in-message and between-message linking, forming something akin to a specific newsgroup or a forum section.
 + `From`: Name of the author of the message. It is up to the message reader whether to combine it with the sender or not and how to present it. A node can be used by multiple people, a From is not a Sender. The square brackets are optional and can contain a freeform address for directly contacting the author, as an URI - `mailto:` for email, `https://matrix.to/#/@user:matrix.org` is an option for Matrix, other schema for any other means of contact, etc.
-+ `To`: Has no meaning other than alerting the person in the `To` that the message is directed at them, which mail readers can take advantage of. When not directed at anyone in particular, the message should be `To: All`.
++ `To`: Has no meaning other than alerting the person in the `To` that the message is directed at them, which mail readers can take advantage of. When not directed at anyone in particular, the message should be `To: All`. When the `To` field is absent, the readers should treat the message as if it was `To: All`.
 + `Date`: Message date, used by readers for sorting messages chronologically. Must be in the form `2006-01-02 15:04:05`, and is *always* assumed to be in UTC. It is the business of the reader to translate it to local time if desired.
 + `ReplyTo`: If the message is a reply to another message, its msgid goes into this field, otherwise the field is absent. This is used by the readers to build reply trees.
 + `Subj`: Message subject, primarily intended to be displayed in lists of messages.
