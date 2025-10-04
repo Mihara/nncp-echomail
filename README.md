@@ -8,7 +8,7 @@ See the [informal specification](SPEC.md) for details of how it is meant to func
 
 ## Building
 
-You need [Go](https://go.dev/) version 1.25.1 or newer. The most expedient way to build right now is Taskfile: `task build`, but you can build manually:
+You need [Go](https://go.dev/) version 1.25.1 or newer. The most expedient way to build right now is [Taskfile](https://taskfile.dev/): `task build`, but you can build manually:
 
 ```bash
 cd cmd/echomail-mailer
