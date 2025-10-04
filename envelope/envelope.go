@@ -5,7 +5,7 @@ package envelope
 import (
 	"bufio"
 	"bytes"
-	"crypto/sha256"
+	"crypto/sha512"
 	"encoding/base64"
 	"fmt"
 	"slices"
@@ -263,7 +263,7 @@ func Read(source []byte) (Envelope, error) {
 }
 
 func computeMsgId(body []byte) string {
-	hash := sha256.Sum256(body)
+	hash := sha512.Sum512_256(body)
 	return base64.RawURLEncoding.EncodeToString(hash[:])
 }
 
@@ -300,6 +300,6 @@ func (e *Envelope) Parse() (EchomailMessage, error) {
 // Generates a directory name from a group name.
 // It is based on a hash to allow using any symbols as part of the group name.
 func GroupDir(groupName string) string {
-	hash := sha256.Sum256([]byte(strings.TrimSpace(groupName)))
+	hash := sha512.Sum512_256([]byte(strings.TrimSpace(groupName)))
 	return base64.RawURLEncoding.EncodeToString(hash[:]) + ".group"
 }
