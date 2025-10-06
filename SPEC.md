@@ -43,7 +43,7 @@ That is, the `.`.
 
 + A message file is a valid gemtext file.
 + Upon reception, the message's unique *msgid* is calculated.
-  + The msgid is a SHA-512/256 hash of the message file, (that is, the leftmost 32 bytes of SHA-512, as specified in [FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) and available in most standard libraries near you) encoded in base64, as specified in [RFC4648](https://www.rfc-editor.org/rfc/rfc4648.html) section 5, "URL and filename safe alphabet".
+  + The msgid is a SHA-512/256 hash of the message file, (as specified in [FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) and available in most standard libraries near you) encoded in base64, as specified in [RFC4648](https://www.rfc-editor.org/rfc/rfc4648.html) section 5, "URL and filename safe alphabet".
   + A repeat reception of a message with the same hash should never overwrite any files received previously.
   + Whether the message file remains unaltered after its hash was calculated is an implementaiton detail.
 + A message always begins with a header block, wrapped in ```` ```Echomail ```` -- that is, a gemtext preformatted text block labeled `Echomail`.
