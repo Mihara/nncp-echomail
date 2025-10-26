@@ -47,10 +47,11 @@ That is, the `.`.
   + A repeat reception of a message with the same hash should never overwrite any files received previously.
   + Whether the message file remains unaltered after its hash was calculated is an implementaiton detail.
 + A message always begins with a header block, wrapped in ```` ```Echomail ```` -- that is, a gemtext preformatted text block labeled `Echomail`.
-  + The header block contains `<field>: <value>` pairs, one per line, in no specific order.
+  + Gemtext specifies that line separators on the wire can be either CRLF or LF alone, and mailers should be capable of correctly handling both.
   + Messages that do not begin immediately with such a block are not valid and are to be discarded.
+  + The header block contains `<field>: <value>` pairs, one per line, in no specific order.
   + Empty lines in the header make the entire header invalid.
-  + Any lines longer than 1024 bytes make the entire header invalid.
+  + Any lines longer than 1024 bytes sans line separators make the entire header invalid.
   + Header fields are to be space-trimmed during header parsing.
 + Only the `Sender` and `Group` fields are required -- Sender is used to verify authenticity, if such information is available from NNCP, while Group is used to identify a specific message group within an area. Anything else is actually optional.
   + It's up to the message reader what to assume for the contents of other fields. For example, an absent `From` might be rendered using the contents of `Sender`, while an absent `Date` might be treated as a sticky, or potentially cause the reader to disregard the entire message.
