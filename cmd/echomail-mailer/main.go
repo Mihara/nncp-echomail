@@ -131,7 +131,7 @@ func main() {
 		}
 
 		mailRoot := addMailRoot(receiveCmd)
-		verifySender := receiveCmd.Bool("sender", false, "Verify message sender against NNCP_SENDER")
+		noVerifySender := receiveCmd.Bool("noorigin", false, "Do not verify message sender against NNCP_ORIGIN")
 		receiveCmd.Parse(os.Args[2:])
 
 		testMailRoot(*mailRoot)
@@ -143,15 +143,15 @@ func main() {
 		mail, err := env.Parse()
 		fail(err, "error parsing message")
 
-		if *verifySender {
-			sender, isSet := os.LookupEnv("NNCP_SENDER")
+		if !*noVerifySender {
+			sender, isSet := os.LookupEnv("NNCP_ORIGIN")
 			if isSet {
 				if sender != mail.Sender {
 					fmt.Fprintf(os.Stderr, "sender spoof detected")
 					os.Exit(1)
 				}
 			} else {
-				fmt.Fprintf(os.Stderr, "NNCP_SENDER environment variable is not set")
+				fmt.Fprintf(os.Stderr, "NNCP_ORIGIN environment variable is not set. If your version of NNCP is too old to supply this, you may want to use -noorigin until you can update.")
 				os.Exit(1)
 			}
 		}

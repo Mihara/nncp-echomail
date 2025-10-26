@@ -41,8 +41,8 @@ tasks:
       - cat testdata/reply1.gmi | bin/echomail-mailer send -root testdata/echo -nosave > testdata/envelopes/reply1.msg
       - cat testdata/reply2.gmi | bin/echomail-mailer send -root testdata/echo -nosave > testdata/envelopes/reply2.msg
       # Receive envelopes...
-      - cat testdata/envelopes/reply2.msg | bin/echomail-mailer receive -root testdata/echo
-      - cat testdata/envelopes/reply1.msg | bin/echomail-mailer receive -root testdata/echo
-      - cat testdata/envelopes/thread.msg | bin/echomail-mailer receive -root testdata/echo
+      - cat testdata/envelopes/reply2.msg | bin/echomail-mailer receive -noorigin -root testdata/echo
+      - cat testdata/envelopes/reply1.msg | bin/echomail-mailer receive -noorigin -root testdata/echo
+      - cat testdata/envelopes/thread.msg | bin/echomail-mailer receive -noorigin -root testdata/echo
       # Generate index.
       - bin/echomail-index -root testdata/echo
